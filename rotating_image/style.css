@@ -1,0 +1,17 @@
+.red {
+  display: block;
+  border: 10px red solid;
+  background-image: url("./smiley.jpg");
+  background-repeat: no-repeat;
+  height: 75px;
+  width: 100px;
+}
+
+.blue {
+  display: block;
+  border: 10px blue solid;
+  background-image: url("./smiley.jpg");
+  background-repeat: no-repeat;
+  height: 75px;
+  width: 100px;
+}
