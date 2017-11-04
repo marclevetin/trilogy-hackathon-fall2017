@@ -2,9 +2,14 @@ import React from 'react';
 
 const StudentGroup = (props) => {
   return (
-    <div>
-      This is the StudentGroup component
-    </div>
+    <tr>
+      <td>
+        Number
+      </td>
+      <td>
+        Student A, B, C - This is the StudentGroup component
+      </td>
+    </tr>
   )
 }
 

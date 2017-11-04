@@ -13,7 +13,19 @@ class ClassSetup extends Component {
     return(
       <div>
         This is the ClassSetup container.
-        <StudentRow />
+        <button>Add a student manually</button>
+        <button>Import student file</button>
+        <table>
+          <thead>
+            <th>Class</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Slack</th>
+          </thead>
+          <tbody>
+            <StudentRow />
+          </tbody>
+        </table>
       </div>
     )
   }

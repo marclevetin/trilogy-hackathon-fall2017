@@ -13,7 +13,17 @@ class TimeTracker extends Component {
     return(
       <div>
         This is the TimeTracker container.
-        <TimeTrackerItem />
+        <table>
+          <thead>
+            <tr>
+              <th>Class activity</th>
+              <th>Mark Complete</th>
+            </tr>
+          </thead>
+          <tbody>
+            <TimeTrackerItem />
+          </tbody>
+        </table>
       </div>
     )
   }

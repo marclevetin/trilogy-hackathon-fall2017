@@ -3,7 +3,9 @@ import React from 'react';
 const RandomStudent = (props) => {
   return (
     <div>
-      This is the RandomStudent component
+      Student image placeholder<br />
+      Student name<br />
+      Student status
     </div>
   )
 }

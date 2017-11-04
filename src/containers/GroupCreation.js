@@ -13,7 +13,15 @@ class GroupCreation extends Component {
     return(
       <div>
         This is the GroupCreation container.
-        <StudentGroup />
+        <table>
+          <thead>
+            <th>Group Number</th>
+            <th>Students</th>
+          </thead>
+          <tbody>
+            <StudentGroup />
+          </tbody>
+        </table>
       </div>
     )
   }

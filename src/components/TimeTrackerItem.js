@@ -2,9 +2,14 @@ import React from 'react';
 
 const TimeTrackerItem = (props) => {
   return (
-    <div>
-      This is the TimeTrackerItem component
-    </div>
+      <tr>
+        <td>
+          This is the TimeTrackerItem component
+        </td>
+        <td>
+          <button>Done</button>
+        </td>
+      </tr>
   )
 }
 

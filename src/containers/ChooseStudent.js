@@ -13,6 +13,7 @@ class ChooseStudent extends Component {
     return(
       <div>
         This is the ChooseStudent container.
+        <button>Pick a student</button>
         <RandomStudent />
       </div>
     )
