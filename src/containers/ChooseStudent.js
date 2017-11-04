@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import RandomStudent from '../components/RandomStudent'
+import RandomStudent from '../components/RandomStudent';
+import studentdata from '../data/studentdata';
 
 class ChooseStudent extends Component {
   constructor(props) {
@@ -10,11 +11,21 @@ class ChooseStudent extends Component {
   }
 
   render() {
+    let allStudents = studentdata.map(student => {
+      debugger;
+      return (
+        <RandomStudent
+          id = { student.id }
+          name = { student.name }
+          slack = { student.slack }
+        />
+      )
+    })
+
     return(
       <div>
-        This is the ChooseStudent container.
         <button>Pick a student</button>
-        <RandomStudent />
+        { allStudents }
       </div>
     )
   }

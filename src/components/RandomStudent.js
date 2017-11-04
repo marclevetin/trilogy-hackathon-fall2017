@@ -4,7 +4,8 @@ const RandomStudent = (props) => {
   return (
     <div>
       Student image placeholder<br />
-      Student name<br />
+      <p>{ props.name }</p>
+      <p>Slack: { props.slack }</p>
       Student status
     </div>
   )
