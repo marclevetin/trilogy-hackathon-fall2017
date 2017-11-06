@@ -27,8 +27,7 @@ class GroupCreation extends Component {
     let allGroups = []
     let allStudents = studentdata
     let numberGroups = this.state.groupSize
-    let individualGroupSize = allStudents.length / numberGroups
-    let remainders = allStudents.length % numberGroups
+    let individualGroupSize = Math.floor(allStudents.length / numberGroups)
     let tempGroup = []
 
 
@@ -45,7 +44,11 @@ class GroupCreation extends Component {
     }
 
     // assignation of remainder to complete groups
-
+    if (allStudents.length !== 0 && allGroups.length !== 0) {
+      for (var k = 0; k < allStudents.length; k++) {
+        allGroups[k].push(allStudents[k].name)
+      }
+    }
 
     // map allGroups to something that can be displayed.
     let displayGroups = allGroups.map(group => {
