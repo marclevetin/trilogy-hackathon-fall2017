@@ -3,22 +3,10 @@ import RandomStudent from '../components/RandomStudent';
 // import studentdata from '../data/studentdata';
 
 class ChooseStudent extends Component {
-  constructor(props) {
-    super(props)
-    this.state ={
-      placeholder: '', 
-      students: []
-    }
-  } 
-
-  componentDidMount() {
-    fetch('/students')
-      .then(res => res.json())
-      .then(students => this.setState({ students }));
-  }
+  
 
   render() {
-    let allStudents = this.state.students.map(student => {
+    let allStudents = this.props.students.map(student => {
       debugger;
       return (
         <RandomStudent

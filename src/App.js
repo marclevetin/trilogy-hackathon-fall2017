@@ -11,7 +11,21 @@ import ClassSetup from './containers/ClassSetup';
 import GroupCreation from './containers/GroupCreation';
 import TimeTracker from './containers/TimeTracker';
 
-class App extends Component {
+class App extends Component { 
+  constructor(props) {
+    super(props)
+    this.state ={
+      placeholder: '', 
+      students: []
+    }
+  } 
+
+  componentDidMount() {
+    fetch('/students')
+      .then(res => res.json())
+      .then(students => this.setState({ students }));
+  }
+
   render() {
     return (
       <div className="App">
@@ -30,7 +44,7 @@ class App extends Component {
             </ul>
             <Route exact path="/" component={Intro} />
             <Route path="/setup" component={ClassSetup} />
-            <Route path="/choosestudent" component={ChooseStudent} />
+            <Route path="/choosestudent" component={() => <ChooseStudent students={this.state.students} />} />
             <Route path="/groups" component={GroupCreation} />
             <Route path="/timetracker" component={TimeTracker} />
           </div>
