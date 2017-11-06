@@ -46,7 +46,16 @@ class GroupCreation extends Component {
 
     // assignation of remainder to complete groups
 
+
     // map allGroups to something that can be displayed.
+    let displayGroups = allGroups.map(group => {
+      return(
+        <StudentGroup
+          key = { Math.random() }
+          students = { group.join(", ") }
+        />
+      )
+    })
 
     return(
       <div>
@@ -57,17 +66,9 @@ class GroupCreation extends Component {
           placeholder = "Enter number"
           handleChange = { this.handleChange }
         />
-        <table>
-          <thead>
-            <tr>
-              <th>Group Number</th>
-              <th>Students</th>
-            </tr>
-          </thead>
-          <tbody>
-            <StudentGroup />
-          </tbody>
-        </table>
+        <ol>
+          { displayGroups }
+        </ol>
       </div>
     )
   }
