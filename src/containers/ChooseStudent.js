@@ -39,6 +39,8 @@ class ChooseStudent extends Component {
     }
   }
 
+
+
   render() {
     let allStudents = studentdata.map(student => {
       return (
@@ -49,8 +51,8 @@ class ChooseStudent extends Component {
           slack = { student.slack }
         />
       )
-    })
-
+    });
+    
     return(
       <div>
         <Button
