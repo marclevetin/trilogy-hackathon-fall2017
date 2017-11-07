@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import RandomStudent from '../components/RandomStudent'; 
+import RandomStudent from '../components/RandomStudent';
 import Button from '../components/Button';
 import AnswerText from '../components/AnswerText';
 import studentdata from '../data/studentdata';
@@ -43,7 +43,7 @@ class ChooseStudent extends Component {
 
   render() {
     let allStudents = studentdata.map(student => {
-    return (
+      return (
         <RandomStudent
           key = { student.id }
           id = { student.id }
@@ -55,7 +55,13 @@ class ChooseStudent extends Component {
     
     return(
       <div>
-        <button>Pick a student</button>
+        <Button
+          name = "Pick a student"
+          handleClick = { () => this.pickRandomStudent() }
+        />
+        <AnswerText
+          student = { this.state.chosenStudent }
+        />
         { allStudents }
       </div>
     )
