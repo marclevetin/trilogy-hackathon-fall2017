@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import StudentGroup from '../components/StudentGroup';
 import NumberField from '../components/NumberField';
-import studentdata from '../data/studentdata';
+// import studentdata from '../data/studentdata';
 
 class GroupCreation extends Component {
   constructor(props) {
@@ -25,7 +25,7 @@ class GroupCreation extends Component {
 
     // initial state
     let allGroups = []
-    let allStudents = studentdata
+    let allStudents = this.props.students
     let numberGroups = this.state.groupSize
     let individualGroupSize = Math.floor(allStudents.length / numberGroups)
     let tempGroup = []

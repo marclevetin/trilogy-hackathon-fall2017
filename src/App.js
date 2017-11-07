@@ -46,8 +46,8 @@ class App extends Component {
             </ul>
             <Route exact path="/" component={Intro} />
             <Route path="/setup" component={ClassSetup} />
-            <Route path="/choosestudent" component={() => <ChooseStudent students={this.state.students} />} />
-            <Route path="/groups" component={GroupCreation} />
+            <Route path="/choosestudent" component = {() => <ChooseStudent students = {this.state.students} />} />
+            <Route path="/groups" component={() => <GroupCreation students = {this.state.students}/> } />
             <Route path="/timetracker" component={TimeTracker} />
             <Route path="/fisttofive" component={FistToFive} />
           </div>
