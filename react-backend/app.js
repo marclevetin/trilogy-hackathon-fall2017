@@ -4,7 +4,7 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser'); 
-
+var dbURL = require('./n00b')
 
 var index = require('./routes/index');
 var users = require('./routes/users'); 
@@ -14,7 +14,7 @@ var app = express();
 var router = express.Router();  
 
 var mongoose = require('mongoose'); 
-var dev_db_url = 'mongodb://psarson:badgernads1@ds149495.mlab.com:49495/mp-trilogy-hackathon-f2017'
+var dev_db_url = dbURL.mlab;
 mongoose.connect(dev_db_url, { useMongoClient: true }) 
 var db = mongoose.connection;
 
