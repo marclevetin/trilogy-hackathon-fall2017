@@ -3,12 +3,14 @@ var path = require('path');
 var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
-var bodyParser = require('body-parser'); 
-
+var bodyParser = require('body-parser');  
+var axios = require('axios');  
+var multer = require('multer');
 
 var index = require('./routes/index');
 var users = require('./routes/users'); 
-var students = require('./routes/students');
+var students = require('./routes/students'); 
+var cohorts = require('./routes/cohorts');
 
 var app = express();  
 var router = express.Router();  
@@ -32,7 +34,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', index);
 app.use('/users', users); 
-app.use('/students', students);
+app.use('/students', students); 
+app.use('/cohorts', cohorts);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -40,6 +43,17 @@ app.use(function(req, res, next) {
   err.status = 404;
   next(err);
 });
+
+// CORS
+app.use(function(req, res, next) {   
+  res.header("Access-Control-Allow-Origin", "*"); 
+  res.header('Access-Control-Allow-Methods: GET, POST, PUT, DELETE, OPTIONS');
+  res.header('Access-Control-Allow-Origin: http://localhost:3000');
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+});
+
+
 
 // error handler
 app.use(function(err, req, res, next) {
@@ -50,8 +64,7 @@ app.use(function(err, req, res, next) {
   // render the error page
   res.status(err.status || 500);
   res.render('error');
-}); 
-
+});  
 
 
 module.exports = app;
