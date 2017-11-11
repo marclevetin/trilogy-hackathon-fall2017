@@ -12,19 +12,23 @@ import GroupCreation from './containers/GroupCreation';
 import TimeTracker from './containers/TimeTracker';
 import FistToFive from './containers/FistToFive';
 
-class App extends Component { 
+// data
+import studentdata from './data/studentdata'
+
+class App extends Component {
   constructor(props) {
     super(props)
     this.state ={
-      placeholder: '', 
+      placeholder: '',
       students: []
     }
-  } 
+  }
 
   componentDidMount() {
-    fetch('/students')
-      .then(res => res.json())
-      .then(students => this.setState({ students }));
+    this.setState({students: studentdata})
+    // fetch('/students')
+    //   .then(res => res.json())
+    //   .then(students => this.setState({ students }));
   }
 
   render() {
@@ -47,7 +51,7 @@ class App extends Component {
             <Route exact path="/" component={Intro} />
             <Route path="/setup" component={ClassSetup} />
             <Route path="/choosestudent" component={() => <ChooseStudent students={this.state.students} />} />
-            <Route path="/groups" component={GroupCreation} />
+            <Route path="/groups" component={() => <GroupCreation students={studentdata} />} />
             <Route path="/timetracker" component={TimeTracker} />
             <Route path="/fisttofive" component={FistToFive} />
           </div>
