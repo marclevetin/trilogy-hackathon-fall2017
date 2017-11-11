@@ -1,27 +1,18 @@
 import React, { Component } from 'react';  
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import Dropzone from 'react-dropzone'; 
-import FontIcon from 'material-ui/FontIcon';
-import {blue500} from 'material-ui/styles/colors'; 
-import RaisedButton from 'material-ui/RaisedButton'; 
-// import AppBar from 'material-ui/AppBar' 
-var request = require('superagent');
-var apiBaseUrl = "http://localhost:3001"; 
-
-
-// import StudentRow from '../components/StudentRow';
+import csv from 'csv';
+import StudentRow from '../components/StudentRow';
 
 class ClassSetup extends Component {
   constructor(props) {
     super(props) 
-    this.state = {
-      placeholder: '',   
-      filesPreview:[],
-      filesToBeSent:[],  
-      printcount:10
+    this.state = {  
+      placeholder: '',
+      classDataString: '', 
+      classDataArray: []      
     }  
     this.onSubmit = this.handleSubmit.bind(this); 
-    this.onClick = this.handleClick.bind(this);
+    this.onFileSubmit = this.handleFileSubmit.bind(this);  
+    this.handleFiles = this.handleFiles.bind(this); 
   } 
   
   
@@ -41,55 +32,77 @@ class ClassSetup extends Component {
     }).then(function(body) {
       console.log(body); 
     })
-  };  
+  };    
 
-  handleClick(event){ 
-    console.log("handleClick", event);  
-    
-    var formData = new FormData();
-    
+  
+  handleFiles(event) {  
+    var output = [];   
+    var reader = new FileReader(); 
+    reader.onload = () => { 
+      csv.parse(reader.result, (err, data) => {
+          var text = reader.result; 
+          output.push(text);  
+          console.log("uploaded") 
+          this.setState({ classDataString: output }); 
 
-    var filesArray = this.state.filesToBeSent;  
-    console.log('file: ' + this.state.filesToBeSent);
-    
-    formData.append('cohort', filesArray[0][0]);
-     
-    fetch('/cohorts', {
-      method: 'POST',
-      headers: {'Content-Type':'multipart/form-dat'},
-      body: formData 
-    })
-  }  
-
-
-  onDrop(acceptedFiles, rejectedFiles) {
-    console.log('Accepted files: ', acceptedFiles[0].name);
-    var filesToBeSent = this.state.filesToBeSent; 
-    if(filesToBeSent.length < this.state.printcount){ 
-      filesToBeSent.push(acceptedFiles); 
-      var filesPreview=[]; 
-      for(var i in filesToBeSent){
-        filesPreview.push(<div>
-          {filesToBeSent[i][0].name}
-          <MuiThemeProvider>
-            <FontIcon className="material-icons customstyle" color={blue500} />
-          </MuiThemeProvider>
-        </div>
-        ) 
-      }  
-      this.setState({filesToBeSent}); 
-    } 
-    else {
-        alert("You have reached the limit of printing files at a time")
-    }
+      });   
+    };  
+    reader.readAsBinaryString(event.target.files[0]);   
   } 
-  
-  
 
+  handleFileSubmit(event){ 
+    event.preventDefault();
+        
+    if (this.state.classDataString === ''){
+        alert("No File Selected");
+    } else {
 
-  render() { 
-    let allFiles = this.state.filesPreview.map(file => {
-        return file 
+      var str = this.state.classDataString 
+
+      var array = str.join(",").slice(0, -1).split("\n") 
+      
+      var m = array.shift()
+      
+      var attributes = m.split(",");
+      
+      let userName = attributes[0]; 
+      let userEmail = attributes[1]; 
+      let userSlack = attributes[2];
+      
+      
+      var jaySUN = {}; 
+
+      array.forEach(function(userArray, index){  
+        var userData = userArray.split(",")
+        
+        jaySUN[userName]= userData[0];
+        jaySUN[userEmail]= userData[1]; 
+        jaySUN[userSlack]= userData[2]; 
+        
+        fetch('/cohorts', { 
+          method: 'POST', 
+          headers: {'Content-Type':'application/json'},  
+          body: JSON.stringify({
+            "name": jaySUN[userName], 
+            "email": jaySUN[userEmail],  
+            "slack": jaySUN[userSlack]
+          })
+        })
+      });  
+    } 
+  }
+   
+  render() {  
+    let allStudents = this.props.students.map(student => {
+      return (
+        <StudentRow 
+          key = { student.id }
+          id = { student.id }
+          name = { student.name } 
+          email = { student.email }
+          slack = { student.slack }
+        />
+      )
     });
     return(
       <div>
@@ -103,35 +116,30 @@ class ClassSetup extends Component {
           <button type="Submit">Add a student manually</button>
         </form>
         
+        <br />
         
-        <center> 
-            <div> You can upload up to {this.state.printcount} files at a time.</div>
-            <Dropzone onDrop={(files) => this.onDrop(files)}>
-                  <div>Try dropping some files here, or click to select files to upload.</div>
-            </Dropzone>  
-            <div> Files to be printed are: {this.state.filesPreview} </div>
-        </center>
-          <div> {this.state.printingmessage} </div>
+        <h2> Add Your Class </h2> 
 
-        <MuiThemeProvider>
-          <RaisedButton label="Print Files" primary={true} onClick={this.onClick}/>
-        </MuiThemeProvider> 
-
-          {allFiles}
+        <form onSubmit={this.onFileSubmit}> 
+          <input ref={(ref) => {this.type = ref}} type="file" onChange={this.handleFiles}/><br />   
+          <br />
+          <button className='btn btn-primary' type="submit">Upload</button>
+        </form> 
         
+        <br />         
 
-        {/* <table>
-          <thead>
+        <table> 
+          <tbody>
+          <tr>
             <th>Class</th>
             <th>Name</th>
             <th>Email</th>
             <th>Slack</th>
-          </thead>
-          <tbody>
-            <StudentRow />
+          </tr>
+            { allStudents } 
           </tbody>
-        </table>  */}
-      </div>
+        </table> 
+      </div>  
     )
   }
 }

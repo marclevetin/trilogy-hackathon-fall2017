@@ -25,7 +25,7 @@ class App extends Component {
     fetch('/students')
       .then(res => res.json())
       .then(students => this.setState({ students }));
-  }
+  } 
 
   render() {
     return (
@@ -45,7 +45,7 @@ class App extends Component {
               <li><Link to="/fisttofive">Fist to Five</Link></li>
             </ul>
             <Route exact path="/" component={Intro} />
-            <Route path="/setup" component={ClassSetup} />
+            <Route path="/setup" component={() => <ClassSetup students = {this.state.students} />} />
             <Route path="/choosestudent" component = {() => <ChooseStudent students = {this.state.students} />} />
             <Route path="/groups" component={() => <GroupCreation students = {this.state.students}/> } />
             <Route path="/timetracker" component={TimeTracker} />

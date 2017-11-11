@@ -5,6 +5,7 @@
   "dependencies": {
     "axios": "^0.17.0",
     "body-parser": "^1.18.2",
+    "csv": "^2.0.0",
     "dropzone": "^5.2.0",
     "foreman": "^2.0.0",
     "marked": "^0.3.6",
