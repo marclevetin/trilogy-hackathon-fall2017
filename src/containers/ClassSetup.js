@@ -7,8 +7,7 @@ class ClassSetup extends Component {
     super(props) 
     this.state = {  
       placeholder: '',
-      classDataString: '', 
-      classDataArray: []      
+      classDataString: ''     
     }  
     this.onSubmit = this.handleSubmit.bind(this); 
     this.onFileSubmit = this.handleFileSubmit.bind(this);  
