@@ -12,6 +12,9 @@ This app offers a variety of tools to help make class run smoothly.  Brainstorme
 - Slack integration
 - Reminder to start the video
 
+## Libraries
+We use https://react-materialize.github.io/#/
+
 ## ER diagrams
 TBD
 
