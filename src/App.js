@@ -12,20 +12,23 @@ import GroupCreation from './containers/GroupCreation';
 import TimeTracker from './containers/TimeTracker';
 import FistToFive from './containers/FistToFive';
 
-class App extends Component { 
+// data
+import studentdata from './data/studentdata'
+
+class App extends Component {
   constructor(props) {
     super(props)
     this.state ={
-      placeholder: '', 
+      placeholder: '',
       students: []
     }
-  } 
+  }
 
   componentDidMount() {
     fetch('/students')
       .then(res => res.json())
       .then(students => this.setState({ students }));
-  } 
+  }
 
   render() {
     return (
