@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import RandomStudent from '../components/RandomStudent';
 import Button1 from '../components/Button1';
 import AnswerText from '../components/AnswerText';
-import studentdata from '../data/studentdata';
+// import studentdata from '../data/studentdata';
 
 // react-materialize
 import {Row, Col} from 'react-materialize'
@@ -19,7 +19,7 @@ class ChooseStudent extends Component {
   }
 
   pickRandomStudent() {
-    let allStudents = studentdata
+    let allStudents = this.props.students;
     let availableStudents = allStudents.filter(student => this.state.pickedStudents.includes(student.name) === false)
     let sizeOfClass = availableStudents.length
     if (sizeOfClass === 0) {
@@ -45,7 +45,7 @@ class ChooseStudent extends Component {
 
 
   render() {
-    let allStudents = studentdata.map(student => {
+    let allStudents = this.props.students.map(student => {
       return (
         <RandomStudent
           key = { student.id }

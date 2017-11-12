@@ -26,9 +26,9 @@ class GroupCreation extends Component {
     // someData=Object.assign({},someData,{audioUrl:"newAudioUrl"});
 
     let allGroups = []
-    let allStudents = Object.assign([],studentArray)
-    let groupSize = this.state.groupSize
-    let numberGroups = (groupSize == 0) ? 0 : Math.floor(allStudents.length / groupSize)
+    let allStudents = this.props.students
+    let numberGroups = this.state.groupSize
+    let individualGroupSize = Math.floor(allStudents.length / numberGroups)
     let tempGroup = []
 
 
