@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import RandomStudent from '../components/RandomStudent';
-import Button from '../components/Button';
+import Button1 from '../components/Button';
 import AnswerText from '../components/AnswerText';
 import studentdata from '../data/studentdata';
 
@@ -60,16 +60,17 @@ class ChooseStudent extends Component {
       <div>
         <Row>
           <Col s={10} offset='s1'>
-        <Button
-          name = "Pick a student"
-          handleClick = { () => this.pickRandomStudent() }
-        />
-        <AnswerText
-          student = { this.state.chosenStudent }
-        />
-        { allStudents }
-      </Col>
-    </Row>
+            <p>&nbsp;</p>
+            <Button1
+              name = "Pick a student to answer a question"
+              handleClick = { () => this.pickRandomStudent() }
+            />
+            <AnswerText
+              student = { this.state.chosenStudent }
+            />
+            { allStudents }
+          </Col>
+        </Row>
       </div>
     )
   }

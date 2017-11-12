@@ -1,11 +1,18 @@
 import React from 'react';
 
-const Button = (props) => {
+// react-materialize
+import {Row, Col, Button} from 'react-materialize'
+
+const Button1 = (props) => {
   return (
-    <button onClick={props.handleClick}>
-      {props.name}
-    </button>
+    <Row>
+      <Col s={10}>
+        <Button waves='light' onClick={props.handleClick}>
+          {props.name}
+        </Button>
+      </Col>
+    </Row>
   )
 }
 
-export default Button;
+export default Button1;

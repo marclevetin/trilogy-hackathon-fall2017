@@ -1,12 +1,18 @@
 import React from 'react';
 
+// react-materialize
+import {Col, Card} from 'react-materialize'
+
+
 const RandomStudent = (props) => {
   return (
     <div>
-      Student image placeholder<br />
-      <p>{ props.name }</p>
-      <p>Slack: { props.slack }</p>
-      Student status
+      <Col s={3}>
+        <Card>
+          { props.name }<br />
+          { props.slack }
+        </Card>
+    </Col>
     </div>
   )
 }

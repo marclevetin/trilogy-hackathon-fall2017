@@ -17,20 +17,20 @@ class TimeTracker extends Component {
       <div>
         <Row>
           <Col s={10} offset='s1'>
-        This is the TimeTracker container.
-        <table>
-          <thead>
-            <tr>
-              <th>Class activity</th>
-              <th>Mark Complete</th>
-            </tr>
-          </thead>
-          <tbody>
-            <TimeTrackerItem />
-          </tbody>
-        </table>
-      </Col>
-    </Row>
+            This is the TimeTracker container.
+            <table>
+              <thead>
+                <tr>
+                  <th>Class activity</th>
+                  <th>Mark Complete</th>
+                </tr>
+              </thead>
+              <tbody>
+                <TimeTrackerItem />
+              </tbody>
+            </table>
+          </Col>
+        </Row>
       </div>
     )
   }
