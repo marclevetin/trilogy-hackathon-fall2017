@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom'
 
 // react-materialize
-import { Navbar, NavItem} from 'react-materialize'
+import { Navbar, NavItem } from 'react-materialize'
 
 
 // import containers

@@ -62,10 +62,11 @@ class GroupCreation extends Component {
     let randomGroups = this.randomizeStudents(this.props.students)
 
     // map randomGroups to something that can be shown on the page.
-    let displayGroups = randomGroups.map(group => {
+    let displayGroups = randomGroups.map((group, index) => {
       return(
         <StudentGroup
           key = { Math.random() }
+          index = { index + 1 }
           students = { group.join(", ") }
         />
       )
@@ -77,14 +78,15 @@ class GroupCreation extends Component {
           <Col s={10} offset='s1'>
             <h2>Group Creator</h2>
             <NumberField
-              label = "Group size:"
+              label = "Enter group size"
               name = "groupSize"
-              placeholder = "Enter number"
               handleChange = { this.handleChange }
             />
-            <ol>
-              { displayGroups }
-            </ol>
+          </Col>
+        </Row>
+        <Row>
+          <Col s={10} offset='s1'>
+            { displayGroups }
           </Col>
         </Row>
       </div>

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 import TextField from '../components/TextField';
-import Button from '../components/Button';
+import Button1 from '../components/Button1';
 
 // react-materialize
 import {Row, Col} from 'react-materialize'
@@ -39,7 +39,7 @@ class FistToFive extends Component {
           handleChange = { this.handleChange }
           placeholder = "Question..."
         />
-        <Button
+        <Button1
           name = "Send"
           handleClick = { this.handleClick }
         />

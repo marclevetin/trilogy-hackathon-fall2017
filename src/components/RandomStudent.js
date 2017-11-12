@@ -7,7 +7,7 @@ import {Col, Card} from 'react-materialize'
 const RandomStudent = (props) => {
   return (
     <div>
-      <Col s={3}>
+      <Col s={12} m={3}>
         <Card>
           { props.name }<br />
           { props.slack }
