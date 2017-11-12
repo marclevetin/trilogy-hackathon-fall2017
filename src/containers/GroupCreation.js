@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
 import StudentGroup from '../components/StudentGroup';
 import NumberField from '../components/NumberField';
+
+// react-materialize
+import {Row, Col} from 'react-materialize'
+
 // import this.props.students from '../data/this.props.students';
 
 class GroupCreation extends Component {
@@ -69,16 +73,20 @@ class GroupCreation extends Component {
 
     return(
       <div>
-        <h2>Group Creator</h2>
-        <NumberField
-          label = "Group size:"
-          name = "groupSize"
-          placeholder = "Enter number"
-          handleChange = { this.handleChange }
-        />
-        <ol>
-          { displayGroups }
-        </ol>
+        <Row>
+          <Col s={10} offset='s1'>
+            <h2>Group Creator</h2>
+            <NumberField
+              label = "Group size:"
+              name = "groupSize"
+              placeholder = "Enter number"
+              handleChange = { this.handleChange }
+            />
+            <ol>
+              { displayGroups }
+            </ol>
+          </Col>
+        </Row>
       </div>
     )
   }

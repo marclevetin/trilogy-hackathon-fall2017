@@ -4,6 +4,9 @@ import Button from '../components/Button';
 import AnswerText from '../components/AnswerText';
 import studentdata from '../data/studentdata';
 
+// react-materialize
+import {Row, Col} from 'react-materialize'
+
 class ChooseStudent extends Component {
   constructor(props) {
     super(props)
@@ -52,9 +55,11 @@ class ChooseStudent extends Component {
         />
       )
     });
-    
+
     return(
       <div>
+        <Row>
+          <Col s={10} offset='s1'>
         <Button
           name = "Pick a student"
           handleClick = { () => this.pickRandomStudent() }
@@ -63,6 +68,8 @@ class ChooseStudent extends Component {
           student = { this.state.chosenStudent }
         />
         { allStudents }
+      </Col>
+    </Row>
       </div>
     )
   }

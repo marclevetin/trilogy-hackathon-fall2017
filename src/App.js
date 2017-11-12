@@ -36,6 +36,7 @@ class App extends Component {
     return (
       <div>
         <Navbar brand='Class Tools' left>
+          <NavItem href="/">Home</NavItem>
           <NavItem href="/setup">Setup</NavItem>
           <NavItem href="/choosestudent">Choose a Student</NavItem>
           <NavItem href="/groups">Create a Group</NavItem>
