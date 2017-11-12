@@ -2,6 +2,10 @@ import React, { Component } from 'react';
 import csv from 'csv';
 import StudentRow from '../components/StudentRow';
 
+// react-materialize
+import {Row, Col} from 'react-materialize'
+
+
 class ClassSetup extends Component {
   constructor(props) {
     super(props) 
@@ -105,6 +109,7 @@ class ClassSetup extends Component {
     });
     return(
       <div>
+
         <h1>This is the ClassSetup container.</h1> 
        
         <h2> Add Student </h2> 

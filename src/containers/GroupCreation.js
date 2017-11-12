@@ -2,6 +2,11 @@ import React, { Component } from 'react';
 import StudentGroup from '../components/StudentGroup';
 import NumberField from '../components/NumberField';
 
+// react-materialize
+import {Row, Col} from 'react-materialize'
+
+// import this.props.students from '../data/this.props.students';
+
 class GroupCreation extends Component {
   constructor(props) {
     super(props)
@@ -57,10 +62,11 @@ class GroupCreation extends Component {
     let randomGroups = this.randomizeStudents(this.props.students)
 
     // map randomGroups to something that can be shown on the page.
-    let displayGroups = randomGroups.map(group => {
+    let displayGroups = randomGroups.map((group, index) => {
       return(
         <StudentGroup
           key = { Math.random() }
+          index = { index + 1 }
           students = { group.join(", ") }
         />
       )
@@ -68,16 +74,21 @@ class GroupCreation extends Component {
 
     return(
       <div>
-        <h2>Group Creator</h2>
-        <NumberField
-          label = "Group size:"
-          name = "groupSize"
-          placeholder = "Enter number"
-          handleChange = { this.handleChange }
-        />
-        <ol>
-          { displayGroups }
-        </ol>
+        <Row>
+          <Col s={10} offset='s1'>
+            <h2>Group Creator</h2>
+            <NumberField
+              label = "Enter group size"
+              name = "groupSize"
+              handleChange = { this.handleChange }
+            />
+          </Col>
+        </Row>
+        <Row>
+          <Col s={10} offset='s1'>
+            { displayGroups }
+          </Col>
+        </Row>
       </div>
     )
   }

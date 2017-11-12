@@ -1,7 +1,11 @@
 import React, { Component } from 'react';
 
 import TextField from '../components/TextField';
-import Button from '../components/Button';
+import Button1 from '../components/Button1';
+
+// react-materialize
+import {Row, Col} from 'react-materialize'
+
 
 class FistToFive extends Component {
   constructor(props) {
@@ -25,6 +29,8 @@ class FistToFive extends Component {
 
   render() {
     return(
+      <Row>
+        <Col s={10} offset='s1'>
       <form className="callout" onSubmit={this.handleSubmit}>
         <TextField
           label = "What do you want to ask?"
@@ -33,13 +39,15 @@ class FistToFive extends Component {
           handleChange = { this.handleChange }
           placeholder = "Question..."
         />
-        <Button
+        <Button1
           name = "Send"
           handleClick = { this.handleClick }
         />
         <p>high level status</p>
         <p>detailed report</p>
       </form>
+    </Col>
+  </Row>
     )
   }
 }
