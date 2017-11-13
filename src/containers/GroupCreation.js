@@ -29,7 +29,7 @@ class GroupCreation extends Component {
 
     for (var i = 0; i < numberGroups; i++) {
       // creation of individual group
-      for (var j = 0; j < groupSize; j++) {
+      for (var j = 0; j < this.state.groupSize; j++) {
         let randomNumber = Math.floor(Math.random() * allStudents.length)
         let randomStudent = allStudents.splice(randomNumber, 1)[0].name
         tempGroup.push(randomStudent)
